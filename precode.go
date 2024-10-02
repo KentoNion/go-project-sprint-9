@@ -88,8 +88,8 @@ func main() {
 			defer wg.Done()
 			for n := range v {
 				mu.Lock()
-				defer mu.Unlock()
 				amounts[i]++
+				mu.Unlock()
 				chOut <- n
 			}
 		}(v, int(i))
